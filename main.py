@@ -40,7 +40,7 @@ llm_call = ChatOpenAI(
     model="gpt-3.5-turbo",
     temperature=0.7,
     max_tokens=500,
-    openai_api_key=openai_api_key  # ← this is the fix!
+    openai_api_key='openai_api_key'
 )
 
 
