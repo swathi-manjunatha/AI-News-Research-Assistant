@@ -23,7 +23,7 @@ except Exception as e:
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-st.title("News Research Chatbot 📈")
+st.title("AI News Research Assistant")
 st.sidebar.title("News Article URLs")
 
 urls = []
@@ -36,7 +36,14 @@ process_url_clicked = st.sidebar.button("Process URLs")
 index_dir = "faiss_index_dir"
 
 main_placeholder = st.empty()
-llm_call = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7, max_tokens=500)
+llm_call = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0.7,
+    max_tokens=500,
+    openai_api_key=openai_api_key  # ← this is the fix!
+)
+
+
 
 if process_url_clicked:
     # Validate URLs
